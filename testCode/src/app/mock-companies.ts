@@ -14,3 +14,7 @@ export const COMPANIES: Company[] = [
     phone: '(234) 222-2222'
   }
 ]
+
+export const companyServiceStub = {
+  getCompanies: () => { Promise.resolve(COMPANIES) }
+}
