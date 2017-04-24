@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Exit if any subcommand fails
+set -e
+
+# Check if jq, the one non-standard dependency, is installed
+RED='\033[0;31m'
+NO_COLOR='\033[0m'
+CLEAR_LINE='\r\033[K'
+
+if ! command -v jq > /dev/null; then
+  printf "${CLEAR_LINE}💀${RED}   You must install jq on your system to use this script${NO_COLOR}\n"
+  printf "ℹ️   On macOS🍎 you should 'brew install jq'\n"
+  exit -1
+fi
+
+# Get the data
+SERVER=localhost:3001
+TEMPFILE=data_import_results.log
+
+# First, import the companies
+echo "Result of importing companies:" >> $TEMPFILE
+curl $SERVER/importCompanies >> $TEMPFILE
+
+# Then, import the people for each company
+echo >> $TEMPFILE # easy way to add a newline
+echo >> $TEMPFILE
+echo "Results of importing people for each company:" >> $TEMPFILE
+for id in $(curl $SERVER/companies | jq '.[] | ._id'); do
+    # Since the ids are taken from a json string, they're wrapped in double
+    # quotes, which must be removed.
+    CLEANED_ID=$(echo $id | tr -d '"')
+
+    # Import the people for the company with id $CLEANED_ID and append the
+    # response to all of the API calls in a temporary file: if every line reads
+    # "Accepted", then it all worked and we're gravy
+    # (after which, the file should be deleted, of course)
+    curl $SERVER/importPeopleForCompany/$CLEANED_ID >> $TEMPFILE
+
+    # because no one wants to read through a string like "AcceptedAcceptedAccepted..."
+    echo >> $TEMPFILE
+done
