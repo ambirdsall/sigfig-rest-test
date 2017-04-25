@@ -1,5 +1,78 @@
-<h1>
-  {{title}}
-</h1>
+<div class="row">
+  <div class="page-header" >
+    <h1>
+      {{title}}
+      <small>{{subtitle}}</small>
+    </h1>
+  </div>
+</div>
 
-<company-list></company-list>
+<div class="row">
+  <div class="col-md-8">
+    <company-list></company-list>
+  </div>
+  <div class="col-md-4">
+    <!-- TODO: replace with <company-form> component -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Create New Company
+        </h3>
+      </div>
+      <div class="panel-body">
+        <form>
+          <div class="form-group" >
+            <label for="company-name" >Name</label>
+            <input class="form-control" id="company-name" >
+          </div>
+          <div class="form-group" >
+            <label for="company-address" >Address</label>
+            <input class="form-control" id="company-address" >
+          </div>
+          <div class="form-group" >
+            <label for="company-revenue" >Revenue</label>
+            <input class="form-control" id="company-revenue" >
+          </div>
+          <div class="form-group" >
+            <label for="company-phone" >Phone Number</label>
+            <input class="form-control" id="company-phone" >
+          </div>
+          <div class="form-group" >
+            <button type="submit" class="btn btn-default" >Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- TODO: replace with <person-form> component -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Create New Person
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group" >
+          <label for="person-name" >Name</label>
+          <input class="form-control" id="person-name" >
+        </div>
+        <div class="form-group" >
+          <label for="person-address" >Address</label>
+          <input class="form-control" id="person-address" >
+        </div>
+        <div class="form-group" >
+          <label for="person-company" >Company</label>
+          <select class="form-control" >
+            <option>Foo</option>
+            <option>Bar</option>
+            <option>Baz</option>
+            <option>Quux</option>
+          </select>
+        </div>
+        <div class="form-group" >
+          <button type="submit" class="btn btn-default" >Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,26 @@
-<h2>
-  Companies
-</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2 class="panel-title">
+      Companies
+    </h2>
+  </div>
 
-<ul>
-  <li *ngFor="let company of companies" >{{company.name}}</li>
-</ul>
+  <div class="panel-body">
+    <div *ngFor="let company of companies"
+         class="panel panel-default">
+      <div class="panel-heading">{{company.name}}</div>
+      <div class="panel-body">
+        <dl>
+          <dt class="h6" >Address:</dt>
+          <dd>{{company.address}}</dd>
+
+          <dt class="h6" >Revenue:</dt>
+          <dd>{{company.revenue}}</dd>
+
+          <dt class="h6" >Phone:</dt>
+          <dd>{{company.phone}}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
