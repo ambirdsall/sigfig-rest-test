@@ -6,7 +6,6 @@ export class Company {
   phone: string
 
   constructor(data) {
-    debugger
     this._id = data._id
     this.name = data.name
     this.address = data.address

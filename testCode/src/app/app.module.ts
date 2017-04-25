@@ -9,6 +9,7 @@ import { CompanyListComponent } from './company-list/company-list.component'
 import { CompanyService } from './company.service'
 import { CompanyDetailComponent } from './company-detail/company-detail.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PeopleListComponent } from './people-list/people-list.component'
 
 const appRoutes = [
   {
@@ -18,6 +19,10 @@ const appRoutes = [
   {
     path: 'companies/:id',
     component: CompanyDetailComponent
+  },
+  {
+    path: 'companies/:id/people',
+    component: PeopleListComponent
   },
   {
     path: '',
@@ -35,7 +40,8 @@ const appRoutes = [
     AppComponent,
     CompanyListComponent,
     CompanyDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PeopleListComponent
   ],
   imports: [
     BrowserModule,
