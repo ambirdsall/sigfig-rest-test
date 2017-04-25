@@ -2,6 +2,7 @@ import { TestBed, async } from '@angular/core/testing'
 
 import { AppComponent } from './app.component'
 import { CompanyListComponent } from './company-list/company-list.component'
+import { CompanyDetailComponent } from './company-detail/company-detail.component'
 import { CompanyService } from './company.service'
 
 describe('AppComponent', () => {
@@ -9,7 +10,8 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        CompanyListComponent
+        CompanyListComponent,
+        CompanyDetailComponent
       ],
       providers: [
         CompanyService

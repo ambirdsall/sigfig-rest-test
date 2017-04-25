@@ -5,12 +5,14 @@ import { HttpModule } from '@angular/http'
 
 import { AppComponent } from './app.component'
 import { CompanyListComponent } from './company-list/company-list.component'
-import { CompanyService } from './company.service'
+import { CompanyService } from './company.service';
+import { CompanyDetailComponent } from './company-detail/company-detail.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CompanyListComponent
+    CompanyListComponent,
+    CompanyDetailComponent
   ],
   imports: [
     BrowserModule,

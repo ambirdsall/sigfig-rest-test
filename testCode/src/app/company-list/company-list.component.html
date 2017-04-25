@@ -6,21 +6,10 @@
   </div>
 
   <div class="panel-body">
-    <div *ngFor="let company of companies"
-         class="panel panel-default">
-      <div class="panel-heading">{{company.name}}</div>
-      <div class="panel-body">
-        <dl>
-          <dt class="h6" >Address:</dt>
-          <dd>{{company.address}}</dd>
 
-          <dt class="h6" >Revenue:</dt>
-          <dd>{{company.revenue}}</dd>
-
-          <dt class="h6" >Phone:</dt>
-          <dd>{{company.phone}}</dd>
-        </dl>
-      </div>
+    <div *ngFor="let company of companies">
+      <company-detail [company]="company"></company-detail>
     </div>
+
   </div>
 </div>
