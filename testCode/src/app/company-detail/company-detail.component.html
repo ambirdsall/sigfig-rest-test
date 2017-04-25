@@ -15,5 +15,8 @@
       <dt class="h6" >Phone:</dt>
       <dd>{{company.phone}}</dd>
     </dl>
-  </div>
+    </div>
+    <div class="panel-footer">
+      <a [routerLink]="['/companies', company._id, 'people']">People who work here</a>
+    </div>
 </div>

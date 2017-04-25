@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http, Response } from '@angular/http'
+import { Http, Response, Headers } from '@angular/http'
 
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/toPromise'
@@ -9,6 +9,7 @@ import { Company } from './company'
 @Injectable()
 export class CompanyService {
   private companiesUrl = 'http://localhost:3001/companies'
+  private headers = new Headers({'Content-Type': 'application/json'})
 
   constructor(private http: Http) {}
 
@@ -23,6 +24,19 @@ export class CompanyService {
     return this.http.get(this.urlFor(id))
       .toPromise()
       .then((response) => response.json())
+      .catch(this.handleError)
+  }
+
+  create(company: Company): Promise<Company> {
+    const companyData = {
+      name: company.name,
+      address: company.address,
+      revenue: company.revenue,
+      phone: company.phone
+    }
+    return this.http.post(this.companiesUrl, companyData, { headers: this.headers })
+      .toPromise()
+      .then(res => res.json())
       .catch(this.handleError)
   }
 

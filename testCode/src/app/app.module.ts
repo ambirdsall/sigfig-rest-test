@@ -12,6 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PeopleService } from './people.service'
 import { PeopleListComponent } from './people-list/people-list.component'
 import { PersonDetailComponent } from './person-detail/person-detail.component'
+import { CompanyFormComponent } from './company-form/company-form.component'
+import { CompanyCreateComponent } from './company-create/company-create.component'
 
 const appRoutes = [
   {
@@ -48,7 +50,9 @@ const appRoutes = [
     CompanyDetailComponent,
     PageNotFoundComponent,
     PeopleListComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    CompanyFormComponent,
+    CompanyCreateComponent
   ],
   imports: [
     BrowserModule,
