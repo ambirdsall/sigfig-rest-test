@@ -32,6 +32,7 @@ export class CompanyService {
 
   private handleError(error: Response | any) {
     console.error(error)
+    debugger
 
     return Observable.throw('¯\_(ツ)_/¯')
   }
