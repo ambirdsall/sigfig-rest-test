@@ -8,7 +8,7 @@ import { Person } from './person'
 
 @Injectable()
 export class PeopleService {
-  private baseUrl = 'http://localhost:3001/companies'
+  private baseUrl = 'http://localhost:3001'
 
   constructor(private http: Http) { }
 
@@ -19,19 +19,19 @@ export class PeopleService {
       .catch(this.handleError)
   }
 
-  getPerson(companyId: string, personId: string): Promise<Person> {
-    return this.http.get(this.personUrlFor(companyId, personId))
+  getPerson(personId: string): Promise<Person> {
+    return this.http.get(this.personUrlFor(personId))
       .toPromise()
       .then((response) => response.json())
       .catch(this.handleError)
   }
 
   private peopleUrlFor(companyId: string): string {
-    return `${this.baseUrl}/${companyId}/people`
+    return `${this.baseUrl}/companies/${companyId}/people`
   }
 
-  private personUrlFor(companyId: string, personId: string): string {
-    return `${this.baseUrl}/${companyId}/people/${personId}`
+  private personUrlFor(personId: string): string {
+    return `${this.baseUrl}/person/${personId}`
   }
 
   private handleError(error: Response | any) {

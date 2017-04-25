@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component'
-import { CompanyListComponent } from './company-list/company-list.component'
 import { CompanyService } from './company.service'
+import { CompanyListComponent } from './company-list/company-list.component'
 import { CompanyDetailComponent } from './company-detail/company-detail.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PeopleService } from './people.service'
 import { PeopleListComponent } from './people-list/people-list.component'
+import { PersonDetailComponent } from './person-detail/person-detail.component'
 
 const appRoutes = [
   {
@@ -23,6 +25,10 @@ const appRoutes = [
   {
     path: 'companies/:id/people',
     component: PeopleListComponent
+  },
+  {
+    path: 'companies/:companyId/people/:personId',
+    component: PersonDetailComponent
   },
   {
     path: '',
@@ -41,7 +47,8 @@ const appRoutes = [
     CompanyListComponent,
     CompanyDetailComponent,
     PageNotFoundComponent,
-    PeopleListComponent
+    PeopleListComponent,
+    PersonDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,10 @@ const appRoutes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CompanyService],
+  providers: [
+    CompanyService,
+    PeopleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

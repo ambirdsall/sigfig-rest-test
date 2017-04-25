@@ -9,7 +9,9 @@
 
     <ul *ngFor="let person of people">
       <li>
-        {{person.name}}
+        <a [routerLink]="person._id">
+          {{person.name}}
+        </a>
       </li>
     </ul>
 
