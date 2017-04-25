@@ -20,7 +20,7 @@ describe('CompanyDetailComponent', () => {
     component = fixture.componentInstance
 
     // mock out the company to be detailed
-    expectedCompany = new Company()
+    expectedCompany = new Company({})
     expectedCompany.name = "TestCorp"
     component.company = expectedCompany
 
