@@ -13,6 +13,13 @@ db.on('error', function() {
 
 var app = express();
 
+// Set up CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // swagger definition
 var swaggerDefinition = {
   info: {

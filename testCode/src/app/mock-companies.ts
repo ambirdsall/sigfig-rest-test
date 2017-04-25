@@ -1,4 +1,5 @@
 import { Company } from './company'
+import { Observable } from 'rxjs/Rx'
 
 export const COMPANIES: Company[] = [
   { id: 'id_the_first',
@@ -16,5 +17,5 @@ export const COMPANIES: Company[] = [
 ]
 
 export const companyServiceStub = {
-  getCompanies: () => { Promise.resolve(COMPANIES) }
+  getCompanies: () => { Observable.of(COMPANIES) }
 }

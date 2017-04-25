@@ -9,7 +9,9 @@ import { Company } from '../company'
   providers: [ CompanyService ]
 })
 export class CompanyListComponent implements OnInit {
+  errorMessage: string
   companies: Company[]
+  mode = 'Observable'
 
   constructor(private companyService: CompanyService) {}
 
@@ -18,6 +20,9 @@ export class CompanyListComponent implements OnInit {
   }
 
   getCompanies(): void {
-    this.companyService.getCompanies().then(companies => this.companies = companies)
+    this.companyService.getCompanies()
+      .subscribe(
+        companies => this.companies = companies,
+        error => this.errorMessage = <any>error)
   }
 }
