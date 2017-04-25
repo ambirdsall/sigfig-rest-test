@@ -1,12 +1,13 @@
 export class Company {
-  id: string
+  _id: string
   name: string
   address: string
   revenue: number
   phone: string
 
   constructor(data) {
-    this.id = data.id
+    debugger
+    this._id = data._id
     this.name = data.name
     this.address = data.address
     this.revenue = data.revenue

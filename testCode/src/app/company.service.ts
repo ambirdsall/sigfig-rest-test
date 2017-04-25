@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core'
 import { Http, Response } from '@angular/http'
 
 import { Observable } from 'rxjs/Observable'
-import 'rxjs/add/operator/catch'
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/toPromise'
 
 import { Company } from './company'
 
@@ -13,16 +12,22 @@ export class CompanyService {
 
   constructor(private http: Http) {}
 
-  getCompanies(): Observable<Company[]> {
+  getCompanies(): Promise<Company[]> {
     return this.http.get(this.companiesUrl)
-                    .map(this.extractData)
-                    .catch(this.handleError)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError)
   }
 
-  private extractData(res: Response) {
-    let body = res.json()
-    body.id = body._id
-    return body
+  getCompany(id: string): Promise<Company> {
+    return this.http.get(this.urlFor(id))
+      .toPromise()
+      .then((response) => response.json())
+      .catch(this.handleError)
+  }
+
+  private urlFor(companyId: string): string {
+    return `${this.companiesUrl}/${companyId}`
   }
 
   private handleError(error: Response | any) {

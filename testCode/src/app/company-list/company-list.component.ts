@@ -9,7 +9,7 @@ import { Company } from '../company'
   providers: [ CompanyService ]
 })
 export class CompanyListComponent implements OnInit {
-  errorMessage: string
+  // TODO: handle upstream http errors gracefully
   companies: Company[]
   mode = 'Observable'
 
@@ -21,8 +21,6 @@ export class CompanyListComponent implements OnInit {
 
   getCompanies(): void {
     this.companyService.getCompanies()
-      .subscribe(
-        companies => this.companies = companies,
-        error => this.errorMessage = <any>error)
+      .then(companies => this.companies = companies)
   }
 }

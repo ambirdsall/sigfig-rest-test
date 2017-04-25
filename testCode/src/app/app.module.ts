@@ -8,28 +8,40 @@ import { AppComponent } from './app.component'
 import { CompanyListComponent } from './company-list/company-list.component'
 import { CompanyService } from './company.service'
 import { CompanyDetailComponent } from './company-detail/company-detail.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+
+const appRoutes = [
+  {
+    path: 'companies',
+    component: CompanyListComponent
+  },
+  {
+    path: 'companies/:id',
+    component: CompanyDetailComponent
+  },
+  {
+    path: '',
+    redirectTo: '/companies',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanyListComponent,
-    CompanyDetailComponent
+    CompanyDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/companies',
-        pathMatch: 'full'
-      },
-      {
-        path: 'companies',
-        component: CompanyListComponent
-      }
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [CompanyService],
   bootstrap: [AppComponent]
