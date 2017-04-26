@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Exit if any subcommand fails
+set -e
+
+# Check if jq, the one non-standard dependency, is installed
+RED='\033[0;31m'
+NO_COLOR='\033[0m'
+CLEAR_LINE='\r\033[K'
+
+if command -v yarn > /dev/null; then
+  INSTALL_CMD='yarn install'
+else
+  INSTALL_CMD='npm install'
+fi
+
+echo "Installing server packages" && $INSTALL_CMD
+echo "Installing front-end packages" && cd testCode && $INSTALL_CMD
