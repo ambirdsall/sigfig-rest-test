@@ -17,7 +17,8 @@ import { CompanyCreateComponent } from './company-create/company-create.componen
 import { PersonFormComponent } from './person-form/person-form.component'
 import { PersonCreateComponent } from './person-create/person-create.component';
 import { PersonEditComponent } from './person-edit/person-edit.component';
-import { CompanyEditComponent } from './company-edit/company-edit.component'
+import { CompanyEditComponent } from './company-edit/company-edit.component';
+import { BackArrowComponent } from './back-arrow/back-arrow.component'
 
 const appRoutes = [
   {
@@ -68,7 +69,8 @@ const appRoutes = [
     PersonFormComponent,
     PersonCreateComponent,
     PersonEditComponent,
-    CompanyEditComponent
+    CompanyEditComponent,
+    BackArrowComponent
   ],
   imports: [
     BrowserModule,

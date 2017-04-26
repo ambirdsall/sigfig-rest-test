@@ -38,6 +38,10 @@ export class PersonEditComponent implements OnInit {
       .then(() => this.router.navigate(['/companies', this.person.companyId, 'people']))
   }
 
+  goBack() {
+    this.location.back()
+  }
+
   private getData(personId: string): void {
     this.peopleService.getPerson(personId)
       .then(person => this.person = person)

@@ -28,6 +28,10 @@ export class CompanyEditComponent implements OnInit {
       .then(() => this.router.navigate(['/companies', this.company._id]))
   }
 
+  goBack() {
+    this.location.back()
+  }
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.getCompany(params.id)
