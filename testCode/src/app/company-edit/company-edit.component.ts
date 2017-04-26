@@ -10,7 +10,6 @@ import { CompanyService } from '../company.service'
 @Component({
   selector: 'company-edit',
   templateUrl: './company-edit.component.html',
-  styleUrls: ['./company-edit.component.css'],
   providers: [ CompanyService ]
 })
 export class CompanyEditComponent implements OnInit {

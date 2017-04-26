@@ -7,7 +7,6 @@ import { PeopleService } from '../people.service'
 @Component({
   selector: 'person-create',
   templateUrl: './person-create.component.html',
-  styleUrls: ['./person-create.component.css'],
   providers: [ PeopleService ]
 })
 export class PersonCreateComponent {

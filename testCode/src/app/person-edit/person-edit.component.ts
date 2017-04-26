@@ -12,7 +12,6 @@ import { CompanyService } from '../company.service'
 @Component({
   selector: 'person-edit',
   templateUrl: './person-edit.component.html',
-  styleUrls: ['./person-edit.component.css'],
   providers: [ PeopleService, CompanyService ]
 })
 export class PersonEditComponent implements OnInit {

@@ -12,7 +12,6 @@ import { Company } from '../company'
 @Component({
   selector: 'app-people-list',
   templateUrl: './people-list.component.html',
-  styleUrls: ['./people-list.component.css'],
   providers: [ PeopleService ]
 })
 export class PeopleListComponent implements OnInit {

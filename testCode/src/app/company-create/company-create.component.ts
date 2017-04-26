@@ -6,8 +6,7 @@ import { CompanyService } from '../company.service'
 
 @Component({
   selector: 'company-create',
-  templateUrl: './company-create.component.html',
-  styleUrls: ['./company-create.component.css']
+  templateUrl: './company-create.component.html'
 })
 export class CompanyCreateComponent {
   company: Company

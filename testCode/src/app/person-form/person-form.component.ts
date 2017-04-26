@@ -7,7 +7,6 @@ import { CompanyService } from '../company.service'
 @Component({
   selector: 'person-form',
   templateUrl: './person-form.component.html',
-  styleUrls: ['./person-form.component.css'],
   providers: [ CompanyService ]
 })
 export class PersonFormComponent implements OnInit {
