@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { Http, Response } from '@angular/http'
+import { Http, Response, Headers } from '@angular/http'
 
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/toPromise'
@@ -9,6 +9,8 @@ import { Person } from './person'
 @Injectable()
 export class PeopleService {
   private baseUrl = 'http://localhost:3001'
+  private personUrl = this.baseUrl + '/person'
+  private headers = new Headers({'Content-Type': 'application/json'})
 
   constructor(private http: Http) { }
 
@@ -26,18 +28,30 @@ export class PeopleService {
       .catch(this.handleError)
   }
 
+  create(person: Person): Promise<Person> {
+    const personData = {
+      name: person.name,
+      email: person.email,
+      companyId: person.companyId
+    }
+
+    return this.http.post(this.personUrl, personData, { headers: this.headers })
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError)
+  }
   private peopleUrlFor(companyId: string): string {
     return `${this.baseUrl}/companies/${companyId}/people`
   }
 
   private personUrlFor(personId: string): string {
-    return `${this.baseUrl}/person/${personId}`
+    return `${this.personUrl}/${personId}`
   }
 
   private handleError(error: Response | any) {
     console.error(error)
     debugger
 
-    return Observable.throw('¯\_(ツ)_/¯')
+    return Promise.reject('¯\_(ツ)_/¯')
   }
 }

@@ -14,6 +14,8 @@ import { PeopleListComponent } from './people-list/people-list.component'
 import { PersonDetailComponent } from './person-detail/person-detail.component'
 import { CompanyFormComponent } from './company-form/company-form.component'
 import { CompanyCreateComponent } from './company-create/company-create.component'
+import { PersonFormComponent } from './person-form/person-form.component'
+import { PersonCreateComponent } from './person-create/person-create.component';
 
 const appRoutes = [
   {
@@ -52,7 +54,9 @@ const appRoutes = [
     PeopleListComponent,
     PersonDetailComponent,
     CompanyFormComponent,
-    CompanyCreateComponent
+    CompanyCreateComponent,
+    PersonFormComponent,
+    PersonCreateComponent
   ],
   imports: [
     BrowserModule,

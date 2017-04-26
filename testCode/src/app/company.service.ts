@@ -48,6 +48,6 @@ export class CompanyService {
     console.error(error)
     debugger
 
-    return Observable.throw('¯\_(ツ)_/¯')
+    return Promise.reject('¯\_(ツ)_/¯')
   }
 }
