@@ -6,6 +6,6 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'In Good Company'
+  title = 'Good Company'
   subtitle = 'Sigfig take-home project'
 }
