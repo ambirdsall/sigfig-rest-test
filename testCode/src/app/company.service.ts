@@ -40,6 +40,18 @@ export class CompanyService {
       .catch(this.handleError)
   }
 
+  edit(company: Company): Promise<any> {
+    const companyData = {
+      name: company.name,
+      address: company.address,
+      revenue: company.revenue,
+      phone: company.phone
+    }
+    return this.http.put(this.urlFor(company._id), companyData, { headers: this.headers })
+      .toPromise()
+      .catch(this.handleError)
+  }
+
   private urlFor(companyId: string): string {
     return `${this.companiesUrl}/${companyId}`
   }

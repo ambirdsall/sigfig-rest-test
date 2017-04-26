@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 
 import { ActivatedRoute, Params } from '@angular/router'
 import { Location } from '@angular/common'
-
-import 'rxjs/add/operator/switchMap'
 
 import { PeopleService } from '../people.service'
 import { Person } from '../person'
@@ -19,6 +18,7 @@ export class PersonDetailComponent implements OnInit {
   constructor(
     private peopleService: PeopleService,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
   ) {}
 
@@ -26,6 +26,11 @@ export class PersonDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getPerson(params.personId)
     })
+  }
+
+  delete(): void {
+    this.peopleService.delete(this.person._id)
+      .then(() => this.router.navigate(['/companies', this.person.companyId, 'people']))
   }
 
   private getPerson(personId: string): void {

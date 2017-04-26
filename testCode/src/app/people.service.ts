@@ -40,6 +40,25 @@ export class PeopleService {
       .then(res => res.json())
       .catch(this.handleError)
   }
+
+  edit(person: Person): Promise<any> {
+    const personData = {
+      name: person.name,
+      email: person.email,
+      companyId: person.companyId
+    }
+
+    return this.http.put(this.personUrlFor(person._id), personData, { headers: this.headers })
+      .toPromise()
+      .catch(this.handleError)
+  }
+
+  delete(personId: string): Promise<any> {
+    return this.http.delete(this.personUrlFor(personId))
+      .toPromise()
+      .catch(this.handleError)
+  }
+
   private peopleUrlFor(companyId: string): string {
     return `${this.baseUrl}/companies/${companyId}/people`
   }

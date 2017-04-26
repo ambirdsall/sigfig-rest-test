@@ -10,4 +10,11 @@
       <dd>{{person.email}}</dd>
     </dl>
   </div>
+  <div class="panel-footer">
+    <a class="btn btn-default"
+       [routerLink]="['/companies', person.companyId, 'people', person._id, 'edit']">
+      Edit record
+    </a>
+    <button (click)="delete()" class="btn btn-default">Delete record</button>
+  </div>
 </div>

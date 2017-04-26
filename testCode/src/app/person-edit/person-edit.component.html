@@ -1,0 +1,15 @@
+<div *ngIf="person" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      Edit {{person.name}}
+    </h3>
+  </div>
+  <div class="panel-body">
+    <form>
+  <person-form [person]="person"></person-form>
+  <div class="form-group" >
+    <button (click)="edit()" class="btn btn-default" >Save</button>
+  </div>
+    </form>
+  </div>
+</div>

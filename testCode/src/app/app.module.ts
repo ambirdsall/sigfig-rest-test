@@ -16,6 +16,8 @@ import { CompanyFormComponent } from './company-form/company-form.component'
 import { CompanyCreateComponent } from './company-create/company-create.component'
 import { PersonFormComponent } from './person-form/person-form.component'
 import { PersonCreateComponent } from './person-create/person-create.component';
+import { PersonEditComponent } from './person-edit/person-edit.component';
+import { CompanyEditComponent } from './company-edit/company-edit.component'
 
 const appRoutes = [
   {
@@ -27,12 +29,20 @@ const appRoutes = [
     component: CompanyDetailComponent
   },
   {
+    path: 'companies/:id/edit',
+    component: CompanyEditComponent
+  },
+  {
     path: 'companies/:id/people',
     component: PeopleListComponent
   },
   {
     path: 'companies/:companyId/people/:personId',
     component: PersonDetailComponent
+  },
+  {
+    path: 'companies/:companyId/people/:personId/edit',
+    component: PersonEditComponent
   },
   {
     path: '',
@@ -56,7 +66,9 @@ const appRoutes = [
     CompanyFormComponent,
     CompanyCreateComponent,
     PersonFormComponent,
-    PersonCreateComponent
+    PersonCreateComponent,
+    PersonEditComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,
