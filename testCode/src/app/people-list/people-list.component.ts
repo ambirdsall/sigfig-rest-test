@@ -6,6 +6,8 @@ import 'rxjs/add/operator/switchMap'
 
 import { PeopleService } from '../people.service'
 import { Person } from '../person'
+import { CompanyService } from '../company.service'
+import { Company } from '../company'
 
 @Component({
   selector: 'app-people-list',
@@ -15,21 +17,26 @@ import { Person } from '../person'
 })
 export class PeopleListComponent implements OnInit {
   people: Person[]
+  company: Company
 
   constructor(
     private peopleService: PeopleService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private location: Location
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.getPeople(params.id)
+      this.getData(params.id)
     })
   }
 
-  private getPeople(companyId: string) {
+  private getData(companyId: string) {
     this.peopleService.getPeople(companyId)
       .then(people => this.people = people)
+
+    this.companyService.getCompany(companyId)
+      .then(company => this.company = company)
   }
 }
